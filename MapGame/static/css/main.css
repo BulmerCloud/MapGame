@@ -1,0 +1,150 @@
+* {
+    border: 0;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+body {
+    background: linear-gradient(141deg, #333, #666);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+#title {
+    text-align: center;
+    font-size: 5em;
+    margin: 1em;
+    color: #FFF;
+    text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+    -1px  1px 0 #000,
+     1px  1px 0 #000;
+}
+
+#selector {
+    border-radius: 5px;
+    height: 30px;
+    text-align: center;
+    color: #fff;
+}
+
+#selector a {
+    display: inline-block;
+    border: 1px solid #777;
+    border-radius: 5px;
+    height: 22px;
+    margin: 4px;
+    line-height: 22px;
+    width: 100px;
+    color: #000;
+    text-decoration: none;
+    background-color: #FFF;
+}
+
+#selector input {
+    border: 1px solid #777;
+    border-radius: 5px;
+    height: 22px;
+    margin: 4px;
+    line-height: 22px;
+    width: 100px;
+    text-align: center;
+    background-color: #FFF;
+}
+
+#selector a:hover {
+    background-color: #777;
+}
+
+#centerBox {
+    min-width: 350px;
+    width: 25%;
+    margin: auto;
+    color: #FFF;
+}
+
+#centerBox table td {
+    text-align: left;
+    padding: 0 5px;
+    color: #FFF;
+}
+
+ul, ol {
+    padding: 1.5em;
+}
+
+#uploader, #selectMap, .imageDisplay{
+    display: inline-block;
+    padding: 5px;
+    min-width: 200px;
+    width: 25%;
+    border: 1px solid #777;
+    border-radius: 5px;
+    vertical-align: top;
+    background-color: #FFF;
+}
+
+#MapImage {
+    width: calc(100% - 10px);
+    border: 0;
+    margin: 0;
+}
+
+#selectMap input, #selectMap output {
+    padding: 3px;
+    border: 1px solid #777;
+    border-radius: 5px;
+    height: 30px;
+    line-height: 30px;
+    vertical-align: center;
+}
+
+#desc-page {
+    min-width: 250px;
+    width: 25%;
+    text-indent: 2.5em;
+    margin: auto;
+    line-height: 1.5em;
+    color: #fff;
+}
+
+.hidden {
+    display: none;
+}
+
+.selMap {
+    width: 90%;
+    height: 30px;
+    margin: 5px 5%;
+    text-indent: 2em;
+}
+
+h3 {
+    text-align: center;
+    margin: 5px;
+}
+
+#desc-table {
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    border-spacing: 10px;
+}
+
+#desc-table th {
+    width: 50%;
+    margin: 0 0.75%;
+}
+
+nav {
+    width: calc(100% - 2em);
+    height: 1em;
+    color: #FFF;
+    background-color: #777;
+    background: linear-gradient(0deg, #666, #333);
+    border-bottom: 2px solid #777;
+    padding: 1em;
+}

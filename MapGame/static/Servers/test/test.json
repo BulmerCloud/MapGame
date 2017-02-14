@@ -1,0 +1,10 @@
+{
+	"host": "Dylan",
+	"id": "test",
+	"password": "password",
+	"map": {
+		"type": "Official",
+		"name": "tamriel.png"
+	},
+	"players": ["Dylan", "Jon", "Spencer", "Justin", "Tyler"]
+}

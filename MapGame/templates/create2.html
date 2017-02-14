@@ -1,0 +1,72 @@
+<html>
+    <head>
+        <title>Create | Map Game</title>
+        <link rel="stylesheet" href="../static/css/main.css">
+    </head>
+    <body>
+        <h1 id='title' style="margin: 0.5em;">Create A Game!</h1>
+            <form method="post" action="">
+        <div id="selectMap" style='margin: 0'>
+            <h3>Select A Map</h3>
+            <select id="selectOffMap" class="selMap" name='map' required>
+            </select>
+            <img class="imageDisplay" id="MapImage" alt="Map Preview">
+            </img>
+        </div>
+        <div id="selectMap" style='margin: 0'><br/>
+                <input type="hidden" name="id" value="" id='hid-id'>
+                Your game pin is: <output id="joinNum" form="create"></output><script>var num = ''; for(i=0; i<5; i++){num += Math.floor(Math.random()*10)}document.getElementById('joinNum').innerHTML = num; document.getElementById('hid-id').setAttribute('value', ''+num);</script></br></br>
+                Host&nbsp Username: <input id="username" name="username" style="border:0;border-bottom:1px solid black;padding:2px;border-radius:0;" requirded><br/>
+                Game Password: <input type="password" id="password" name="password" style="border:0;border-bottom:1px solid black;padding:2px;border-radius:0;"requirded><br/>
+                Player Names:&nbsp&nbsp&nbsp <input id="players" name="players" style="border:0;border-bottom:1px solid black;padding:2px;border-radius:0;"placeholder='"John", "Jane", "Mary"' requirded><br/><br/>
+                <input type='submit' value='Start!' id='selectMap' style="margin:0;">
+                <br/><br/>**Please do not set the password to something you normally use, this password is to be shared and people can find it.</div>
+            </form>
+        <script>
+            var mapType = "Official";
+			var mapVal = "selectOffMap";
+            var setType = function (type) {
+                mapType = type;
+            }
+            var update = function () {
+				if ( mapType == "Official") {
+					mapVal = "selectOffMap"
+				}
+//                    console.log(mapType);
+//                document.getElementById("startBTN").setAttribute("href", "/game/new?id=" + document.getElementById('joinNum').innerHTML + "&host=" + document.getElementById('username').value + "&password=" + document.getElementById('password').value + "&players=" + document.getElementById('players').value + "&maptype=" + mapType  + "&mapname=" + (document.getElementById(mapVal).value || ""));
+                    if (document.getElementById("selectOffMap").value != "Select a map!") {
+                        document.getElementById("MapImage").setAttribute("src", "../static/maps/Official/" + document.getElementById("selectOffMap").value );document.getElementById("MapImage").setAttribute('style', 'display: inline-block');
+                } else {
+                    document.getElementById("MapImage").setAttribute('style', 'display: none');
+                }
+                requestAnimationFrame(update);
+            }
+            update();
+        </script>
+        <script>
+            var offMaps = {{ officialMaps | safe }};
+            console.log("Maps: ", offMaps);
+            var ArrayToGUI = function (list, guiID) {
+                this.gui = document.getElementById(guiID);
+                if (list.length == 0) {
+                    this.newOpt = document.createElement("option");
+                    this.newOpt.innerHTML = "No maps have been uploaded!";
+                    this.gui.appendChild(this.newOpt);
+                } else {
+                    this.newOpt = document.createElement("option");
+                    this.newOpt.innerHTML = "Select a map!";
+                    this.newOpt.setAttribute("disabled", 'true');
+                    this.newOpt.setAttribute("selected", 'true');
+                    this.gui.appendChild(this.newOpt);
+                    for (i = 0; i < list.length; i++) {
+                        this.newOpt = document.createElement("option");
+                        this.newOpt.value = list[i];
+                        this.newOpt.innerHTML = list[i];
+                        this.gui.appendChild(this.newOpt);
+                    }
+                }
+            }
+            ArrayToGUI(offMaps, "selectOffMap");
+        </script>
+    </body>
+</html>

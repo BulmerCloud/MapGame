@@ -1,0 +1,92 @@
+<html>
+    <head>
+        <title>Create | Map Game</title>
+        <link rel="stylesheet" href="static/css/main.css">
+    </head>
+    <body>
+        <h1 id='title' style="margin: 0.5em;">Create A Game!</h1>
+        <table id = "desc-table">
+            <tr><th>Upload...</th><th>Then Select!</th></tr>
+        </table>
+        <form id="uploader" enctype="multipart/form-data" method="post" action="">
+            Your game pin is: <output name="id" id="joinNum"></output><script>for(i=0; i<5; i++){document.getElementById('joinNum').innerHTML += Math.floor(Math.random()*10)} </script></br></br>Upload your own map, select it on the right and hit start!</br>Make sure it is under the 2 MB limit!</br></br>
+            <input type="file" accept="image/*" name="file"></br></br>
+            <input type="submit" value="Upload">
+        </form>
+        <div id="selectMap" style="margin: 0.75% 23% 0.75% 0.75%">
+            <h3>Select a...</h3>
+            <h4 style="text-align: center; font-size: 0.8em;">
+            <input type="radio" name="mapType" value="Official" onclick="setType(this.value)"/> Official Map
+            <input type="radio" name="mapType" value="Uploaded" onclick="setType(this.value)"/> Uploaded Map</br>
+            </h4></br>
+            <p>Official Map!</p>
+            <select id="selectOffMap" class="selMap">
+            </select>
+            <p>Or an uploaded map!</p>
+            <select id="selectUpMap" class="selMap">
+            </select>
+        </div>
+        <img class="imageDisplay" id="MapImage" alt="Map Preview">
+        </img>
+        <div id="selectMap" style="margin: 0.75% 23% 0.75% 0.75%; backround-color: transparent;text-align: center"><br/>
+                Host&nbsp Username: <input id="username" name="username" style="border-bottom: 1px solid black" requirded><br/>
+                Game Password: <input type="password" id="password" name="password" style="border-bottom: 1px solid black"requirded><br/>
+                Player Names:&nbsp&nbsp&nbsp <input id="players" name="players" style="border-bottom: 1px solid black" placeholder="John, Jane, Mary" requirded><br/><br/>
+        <a href="" id="startBTN"><div id="selectMap" style="margin:0;width:calc(100% - 12px);text-align: center;color: #000;">
+            Start!
+        </div></a><br/><br/>**Please do not set the password to something you normally use, this can lead to people hacking your accounts!</div>
+        <script>
+            var mapType = "";
+			var mapVal = "";
+            var setType = function (type) {
+                mapType = type;
+            }
+            var update = function () {
+				if ( mapType == "Official") {
+					mapVal = "selectOffMap"
+				} else  {
+					mapVal = "selectUpMap"
+				}
+//                    console.log(mapType);
+                document.getElementById("startBTN").setAttribute("href", "/game/new?id=" + document.getElementById('joinNum').innerHTML + "&host=" + document.getElementById('username').value + "&password=" + document.getElementById('password').value + "&players=" + document.getElementById('players').value + "&maptype=" + mapType  + "&mapname=" + (document.getElementById(mapVal).value || ""));
+                switch (mapType) {
+                    case "Official": 
+                        if (document.getElementById("selectOffMap").value != "Select a map!") {
+                            document.getElementById("MapImage").setAttribute("src", "../static/maps/Official/" + document.getElementById("selectOffMap").value );
+                        }
+                    case "Uploaded": 
+                        if (document.getElementById("selectUpMap").value != "Select a map!" && document.getElementById("selectUpMap").value != "No maps have been uploaded!") {
+                            document.getElementById("MapImage").setAttribute("src", "../static/maps/Uploaded/" + document.getElementById("selectUpMap").value );
+                        }
+                }
+                requestAnimationFrame(update);
+            }
+            update();
+        </script>
+        <script>
+            var offMaps = {{ officialMaps | safe }};
+            var upMaps = {{ uploadedMaps | safe }};
+            console.log("Maps: ", offMaps, upMaps);
+            var ArrayToGUI = function (list, guiID) {
+                this.gui = document.getElementById(guiID);
+                if (list.length == 0) {
+                    this.newOpt = document.createElement("option");
+                    this.newOpt.innerHTML = "No maps have been uploaded!";
+                    this.gui.appendChild(this.newOpt);
+                } else {
+                    this.newOpt = document.createElement("option");
+                    this.newOpt.innerHTML = "Select a map!";
+                    this.gui.appendChild(this.newOpt);
+                    for (i = 0; i < list.length; i++) {
+                        this.newOpt = document.createElement("option");
+                        this.newOpt.value = list[i];
+                        this.newOpt.innerHTML = list[i];
+                        this.gui.appendChild(this.newOpt);
+                    }
+                }
+            }
+            ArrayToGUI(offMaps, "selectOffMap");
+            ArrayToGUI(upMaps, "selectUpMap");
+        </script>
+    </body>
+</html>

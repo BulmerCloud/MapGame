@@ -1,0 +1,159 @@
+<html>
+    <head>
+        <title>Game #{{ id }} | Map Game</title>
+        <link rel="stylesheet" href="/static/css/main.css">
+        <link rel="stylesheet" href="/static/game/game.css">
+        <link rel="stylesheet" href="/static/css/ionicons.min.css">
+        <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <nav style="display: none;">
+            Welcome <span id="usernameNav"></span>
+            Game ID: <span id="gameId"></span>
+            Host: <span id="hostName"></span>
+            Players: <span id="numPlayers"></span>
+        </nav>
+        <login>
+            <form onsubmit="return login()">
+                <table>
+                    <tr>
+                        <th colspan="2">Login to your game</br></br></th>
+                    </tr>
+                    <tr>
+                        <td>Username:</td>
+                        <td><input type="text" name="username" id="username" required/></td>
+                    </tr>
+                    <tr>
+                        <td>Game Password:</td>
+                        <td><input type="password" name="password" id="password" required/></td>
+                    </tr>
+                    <tr colspan="2">
+                        <td><button style="border: 0; text-align: center; width: 50px; height: 20px; margin: 10px calc(100% + 6px);">Login!</button></td>
+                    </tr>
+                </table>
+            </form>
+        </login>
+        <side>
+            <chat>
+                <div id='chat_main'>
+                    <h2 style="padding-top: 10px;">Chat</h2>
+                    <box chat="Global" onclick='game.chat.change("global")'>
+                        <table>
+                            <tr>
+                                <td>
+                                    <span style="margin:3px;">
+                                        <i class="icon ion-earth"></i>
+                                    </span>
+                                </td>
+                                <td>
+                                    Global
+                                </td>
+                            </tr>
+                        </table>
+                    </box>
+                </div>
+                <div id='chat_log' style='display: none;'>
+                    <h2>Global Chat</h2>
+                    <iframe id='log-file' src='/chat?id=test&file=global&msg=' style="height: calc(100vh - 127px)"></iframe>
+                    <box>
+                        <form onsubmit='return game.chat.send("global")'>
+                            <table style='margin: 0;'>
+                                <tr>
+                                    <td style="width:220px; margin: 0;">
+                                        <input id='chat_msg' autocomplete="off" style="width: 100%; height: 20px;">
+                                    </td>
+                                    <td style="width:50px; margin: 0;">
+                                        <input type='submit' style="width: 100%; height: 20px;">
+                                    </td>
+                                </tr>
+                            </table>
+                        </form>
+                    </box>
+                </div>
+            </chat>
+            <stats>
+                <h2 style="padding-top: 10px;">Your Stats</h2>
+            </stats>
+            <apps>
+                <h2 style="padding-top: 10px;">Navigation</h2>
+                <box onclick = 'game.side.toggle("chat")'>
+                    <table>
+                        <tr>
+                            <td>
+                                <span style="margin:3px;">
+                                    <i class="icon ion-chatboxes"></i>
+                                </span>
+                            </td>
+                            <td style="text-align: left;">
+                                Chat
+                            </td>
+                        </tr>
+                    </table>
+                </box>
+                <box onclick = 'game.side.toggle("stats")'>
+                    <table>
+                        <tr>
+                            <td>
+                                <span style="margin:3px;">
+                                    <i class="icon ion-stats-bars"></i>
+                                </span>
+                            </td>
+                            <td style="text-align: left;">
+                                Stats
+                            </td>
+                        </tr>
+                    </table>
+                </box>
+                <box onclick = 'game.side.toggle("settings")'>
+                    <table>
+                        <tr>
+                            <td>
+                                <span style="margin:3px;">
+                                    <i class="icon ion-gear-a"></i>
+                                </span>
+                            </td>
+                            <td style="text-align: left;">
+                                Settings
+                            </td>
+                        </tr>
+                    </table>
+                </box>
+                <box onclick = 'game.side.toggle("logout")'>
+                    <table>
+                        <tr>
+                            <td>
+                                <span style="margin:3px;">
+                                    <i class="icon ion-log-out"></i>
+                                </span>
+                            </td>
+                            <td style="text-align: left;">
+                                Logout
+                            </td>
+                        </tr>
+                    </table>
+                </box>
+            </apps>
+            <div id='stats-btn' onclick = 'game.side.toggle("stats")'>
+                <span style="font-size:24px;margin:3px;display:inline-block;">
+                    <i class="icon ion-stats-bars"></i>
+                </span>
+            </div>
+            <div id='side-btn' onclick = 'game.side.toggle("apps")'>
+                <span style="font-size:24px;margin:3px;display:inline-block;">
+                    <i class="icon ion-android-apps"></i>
+                </span>
+            </div>
+            <div id='chat-btn' onclick = 'game.side.toggle("chat")'>
+                <span style="font-size:24px;margin:3px;display:inline-block;">
+                    <i class="icon ion-chatboxes"></i>
+                </span>
+            </div>
+        </side>
+        <canvas id="map" height='432' width='752'></canvas>
+        <script>var data = {{ data | safe }}</script>
+        <script src="/static/game/PBSWebKit.js"></script>
+        <script src="/static/game/game.js"></script>
+    </body>
+</html>

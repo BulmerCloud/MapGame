@@ -1,0 +1,118 @@
+#usernameNav, #hostName, #numPlayers, #gameId {
+    margin-right: 5em;
+}
+
+login {
+    display: inline-block;
+    min-width: 300px;
+    width: 25%;
+    min-height: 80px;
+    margin: calc(50vh - 142px) auto;
+    background-color: #FFF;
+    border-radius: 0.5em;
+}
+
+login form table {
+    margin: 10px auto;
+}
+
+login input {
+    border-bottom: #888 solid 1px;
+}
+
+tools {
+    width: 2.5em;
+    background-color: #FFF;
+    position: fixed;
+    left: 1em;
+    bottom: 1em;
+    border-radius: 5px;
+    border: 1px solid #000;
+}
+
+#map {
+	display: none;
+    background-size: auto 27em;
+    background-repeat: no-repeat;
+    margin: 14.5vh 14.5vh 0 14.5vh;
+    cursor: pointer;
+}
+
+side {
+    display: none;
+    position: fixed;
+    right: -300px;
+    top: 3em;
+    width: 300px;
+    height: calc(100vh - 3em);
+}
+
+side #chat-btn {
+    position: absolute;
+    bottom: 50px;
+    left: -40px;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    border: 1px solid #000;
+    cursor:pointer;
+}
+
+side #side-btn {
+    position: absolute;
+    bottom: 10px;
+    left: -40px;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    border: 1px solid #000;
+    cursor:pointer;
+}
+
+side #stats-btn {
+    position: absolute;
+    bottom: 90px;
+    left: -40px;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+    background-color: #FFFFFF;
+    border: 1px solid #000;
+    cursor:pointer;
+}
+
+chat, stats, apps {
+    display: block;
+    width: 100%;
+    background-color: #777;
+    background: linear-gradient(180deg, #666, #aaa);
+    height: calc(100vh - 3em);
+    border-left: 2px solid #777;
+    color: #fff;
+}
+
+box {
+    width: calc(100% - 20px);
+    border: 1px solid #FFF;
+    border-radius: 5px;
+    display: block;
+    font: bold 1.25em arial, sans-serif;
+    margin: 10px;
+    cursor:pointer;
+    color: #FFF;
+    text-align: center;
+}
+
+box td {
+    font: bold 1.25em arial, sans-serif;
+    margin: 0 14px;
+    display: inline-table;
+    color: #FFF;
+}
+
+box table {
+    display: inline-table;
+    margin-left: -54px;
+}
