@@ -4,11 +4,11 @@ from flask import Flask, render_template, request, redirect, url_for, jsonify
 from werkzeug.utils import *
 from array import *
 
-LOCATION = '/home/dylan/Desktop/MapGame/MapGame/'
+LOCATION = '< folder location >'
 UPLOAD_FOLDER = LOCATION + 'static/maps/Uploaded'
 ALLOWED_EXTENSIONS = set(['png', 'jpg', 'jpeg'])
 SERVERS = LOCATION + 'static/Servers/'
-HOST = '127.0.0.1'
+HOST = '127.0.0.1' # or 'localhost'
 PORT = 8000
 
 app = Flask(__name__)
