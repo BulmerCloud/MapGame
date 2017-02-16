@@ -1,6 +1,6 @@
 ## Description:
 
-With this game, you and a minimum of three friends can play and try to dominate the map. The person whom creates the server can setup the host and add the initial three or more players as well as set the map. After the creation of the server the host is the only one who can add/remove players and change the game settings. While in the game players have full control on what they want to do has well has how they go to accomplish it with some limitation which is seem in the game. The only thing is, the host has the power of adding obstacles into the game that can dramatically change the outcome of who wins, so make sure you plan on every situation you can come across.
+With this game, you and a minimum of three friends can play and try to dominate the map. The person whom creates the server can setup the host and add the initial three or more players as well as set the map. After the creation of the server, the host is the only one who can add/remove players and change the game settings. While in the game players have full control on what they want to do has well as how they go to accomplish it, but there are some limitation which is seen in the game. One thing to note is that even though the host can't play the game they have the power of adding obstacles into the game that can dramatically change the outcome of who wins, so make sure you plan on every situation you can come across.
 
 ## How To Play
 
