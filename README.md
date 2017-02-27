@@ -1,6 +1,5 @@
 **Online Game Status:** Out of date / Not Secure <br>
-**Current Version:** 1 <br>
-**Version In-development:** 2 <br><br>
+**Current Version:** 1 <br><br>
 *Check Wiki page for changelogs between versions*
 
 ## Description:
