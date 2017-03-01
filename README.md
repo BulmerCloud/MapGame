@@ -1,5 +1,6 @@
-**Online Game Status:** Out of date / Not Secure <br>
-**Current Version:** 0.1 *(Early Stages)* <br><br>
+**Online Game Status:** Running <br>
+**Last Upadte:** Feb 28, 2017<br>
+**Current Version:** *(In-Development)* <br><br>
 *Check Wiki page for changelogs between versions*
 
 ## Description:
