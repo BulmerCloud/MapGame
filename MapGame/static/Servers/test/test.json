@@ -3,5 +3,5 @@
 	"id": "test",
 	"password": "password",
 	"map": "tamriel.png",
-	"players": ["Host", "Dylan", "Jon", "Spencer", "Justin", "Tyler", "Eisaman"]
+	"players": ["Host", "Guest"]
 }
