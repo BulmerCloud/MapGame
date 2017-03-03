@@ -1,10 +1,7 @@
 {
-	"host": "Dylan",
+	"host": "Host",
 	"id": "test",
 	"password": "password",
-	"map": {
-		"type": "Official",
-		"name": "tamriel.png"
-	},
-	"players": ["Dylan", "Jon", "Spencer", "Justin", "Tyler"]
+	"map": "tamriel.png",
+	"players": ["Host", "Dylan", "Jon", "Spencer", "Justin", "Tyler", "Eisaman"]
 }

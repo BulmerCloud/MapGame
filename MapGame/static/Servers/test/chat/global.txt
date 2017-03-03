@@ -1,2 +1,4 @@
+<tr><td id='name'>Host</td><td id='msg'>yo wattup</td></tr>
+<tr><td id='name'>Host</td><td id='msg'>What's up</td></tr>
 <tr><td id='name'>Dylan</td><td id='msg'>Hi</td></tr>
 <tr><td id='name'>Dylan</td><td id='msg'>Hello</td></tr>
