@@ -1,5 +1,6 @@
 <html>
     <head>
+		<link rel='stylesheet' href='/static/{{ ver }}/chat.css'/>
         <style>
             * {
                 color: #FFF;
@@ -7,14 +8,49 @@
         </style>
     </head>
     <body>
-        <div>
-            <table style="width:100%">
-                <tr>
-                    <td style="width:25%"><b>Name</b></td>
-                    <td style="width:75%"><b>Message</b></td>
-                </tr>
-                {{ log | safe }}
+        <main>
+            <table style="border-collapse: collapse;">
+                <tr style="postion: sticky;"><th id='name'>Name</th><th id='msg'>Message</th></tr>
             </table>
-        </div>
+            <table style="border-collapse: collapse;">
+                <tbody id="room">
+                    {{ chat | markdown }}
+                </tbody>
+            </table>
+        </main>
+	    <bottom>
+            <div id='msg'>
+                <input type='text' name='msg' placeholder="Type message here!" autocomplete="off" autofocus id="chat-msg">
+            </div>
+	    </bottom>
+        <script src="/static/{{ ver }}/socket.io.min.js"></script>
+		<script src="/static/{{ ver }}/showdown.min.js"></script>
+	    <script>
+	        let markdown = new showdown.Converter()
+            var chatlog = document.getElementById('room');
+	        let chat = io.connect(window.location.origin + '/chat');
+            chat.on('connect', function() {
+                chat.emit('joined');
+                msg.addEventListener('keydown', function(e) {
+                    var code = e.keyCode || e.which;
+                    if (code == 13) {
+                        if ( msg.value != "" ) {
+                            e.preventDefault();
+                            chat.emit('message', JSON.stringify({msg: msg.value}));
+                            msg.value = "";
+                        }
+                    }
+                });
+            });
+            chat.on('status', function(data) {
+                console.log('Recieved: ', data)
+                chatlog.innerHTML = markdown.makeHtml( data.msg ) + chatlog.innerHTML;
+            });
+            chat.on('message', function(data) {
+                console.log('Recieved: ', data)
+                chatlog.innerHTML = markdown.makeHtml( data.msg ) + chatlog.innerHTML;
+            });
+            let msg = document.getElementById('chat-msg');
+	    </script>
     </body>
 </html>

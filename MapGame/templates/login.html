@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <title>Game #{{ id }} | Map Game</title>
+        <link rel="stylesheet" href="/static/{{ ver }}/main.css">
+        <link rel="stylesheet" href="/static/{{ ver }}/game.css">
+        <link rel="stylesheet" href="/static/css/ionicons.min.css">
+        <link rel="stylesheet" href="/static/css/font-awesome.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    </head>
+    <body>
+        <nav style="display: none;">
+            Login to game #{{ id | safe }}
+        </nav>
+        <login>
+            <form action="" method="POST">
+                <table>
+                    <tr>
+                        <th colspan="2">Login to your game</br></br></th>
+                    </tr>
+                    <tr>
+                        <td>Username:</td>
+                        <td><input type="text" name="username" id="username" required/></td>
+                    </tr>
+                    <tr>
+                        <td>Game Password:</td>
+                        <td><input type="password" name="password" id="password" required/></td>
+                    </tr>
+                    <tr colspan="2">
+                        <td><button style="border: 0; text-align: center; width: 50px; height: 20px; margin: 10px calc(100% + 6px);">Login!</button></td>
+                    </tr>
+                </table>
+            </form>
+        </login>
+    </body>
+</html>

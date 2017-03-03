@@ -1,40 +1,20 @@
 <html>
     <head>
         <title>Game #{{ id }} | Map Game</title>
-        <link rel="stylesheet" href="/static/css/main.css">
-        <link rel="stylesheet" href="/static/game/game.css">
+        <link rel="stylesheet" href="/static/{{ ver }}/main.css">
+        <link rel="stylesheet" href="/static/{{ ver }}/game.css">
         <link rel="stylesheet" href="/static/css/ionicons.min.css">
         <link rel="stylesheet" href="/static/css/font-awesome.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     </head>
     <body>
-        <nav style="display: none;">
-            Welcome <span id="usernameNav"></span>
-            Game ID: <span id="gameId"></span>
-            Host: <span id="hostName"></span>
-            Players: <span id="numPlayers"></span>
+        <nav>
+            Welcome <span id="usernameNav">{{ session['name'] }}</span>
+            Game ID: <span id="gameId">{{ session['id'] }}</span>
+            Host: <span id="hostName">{{ session['host'] }}</span>
+            Players: <span id="numPlayers">{{ session['players'] }}</span>
         </nav>
-        <login>
-            <form onsubmit="return login()">
-                <table>
-                    <tr>
-                        <th colspan="2">Login to your game</br></br></th>
-                    </tr>
-                    <tr>
-                        <td>Username:</td>
-                        <td><input type="text" name="username" id="username" required/></td>
-                    </tr>
-                    <tr>
-                        <td>Game Password:</td>
-                        <td><input type="password" name="password" id="password" required/></td>
-                    </tr>
-                    <tr colspan="2">
-                        <td><button style="border: 0; text-align: center; width: 50px; height: 20px; margin: 10px calc(100% + 6px);">Login!</button></td>
-                    </tr>
-                </table>
-            </form>
-        </login>
         <side>
             <chat>
                 <div id='chat_main'>
@@ -56,21 +36,7 @@
                 </div>
                 <div id='chat_log' style='display: none;'>
                     <h2>Global Chat</h2>
-                    <iframe id='log-file' src='/chat?id=test&file=global&msg=' style="height: calc(100vh - 127px)"></iframe>
-                    <box>
-                        <form onsubmit='return game.chat.send("global")'>
-                            <table style='margin: 0;'>
-                                <tr>
-                                    <td style="width:220px; margin: 0;">
-                                        <input id='chat_msg' autocomplete="off" style="width: 100%; height: 20px;">
-                                    </td>
-                                    <td style="width:50px; margin: 0;">
-                                        <input type='submit' style="width: 100%; height: 20px;">
-                                    </td>
-                                </tr>
-                            </table>
-                        </form>
-                    </box>
+                    <iframe id='log-file' style="height: calc(100vh - 55px)"></iframe>
                 </div>
             </chat>
             <stats>
@@ -152,8 +118,13 @@
             </div>
         </side>
         <canvas id="map" height='432' width='752'></canvas>
-        <script>var data = {{ data | safe }}</script>
-        <script src="/static/game/PBSWebKit.js"></script>
-        <script src="/static/game/game.js"></script>
+        <script>
+            var data = {{ data | safe }};
+            var player = {
+                "name": "{{ session['name'] }}"
+            };
+        </script>
+        <script src="/static/{{ ver }}/PBSWebKit.js"></script>
+        <script src="/static/{{ ver }}/game.js"></script>
     </body>
 </html>
