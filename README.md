@@ -1,5 +1,5 @@
 **Online Game Status:** Running <br>
-**Last Upadte:** Feb 28, 2017<br>
+**Last Update:** Feb 28, 2017<br>
 **Current Version:** *(In-Development for 1.0)* <br><br>
 *Check the Wiki tab for changelogs between versions*
 
